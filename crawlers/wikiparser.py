@@ -1,6 +1,7 @@
 from HTMLParser import HTMLParser
 import urllib
 
+
 class CountryListParser(HTMLParser):
 
     in_cities_table = False
@@ -22,7 +23,8 @@ class CountryListParser(HTMLParser):
                 print '-----------'
 
     def handle_data(self, data):
-        if data == 'Local Name': self.in_cities_table = True
+        if data == 'Local Name':
+            self.in_cities_table = True
         if self.in_cities_table:
             if self.data_count == 1:
                 self.cur_val = data
@@ -31,6 +33,7 @@ class CountryListParser(HTMLParser):
                 self.data_count += 1
 
 parser = CountryListParser()
-sock = urllib.urlopen('http://en.wikipedia.org/wiki/List_of_agglomerations_by_population')
+sock = urllib.urlopen(
+    'http://en.wikipedia.org/wiki/List_of_agglomerations_by_population')
 parser.feed(sock.read())
 sock.close()
