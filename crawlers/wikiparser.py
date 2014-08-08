@@ -1,3 +1,6 @@
+"""
+Quick and dirty one-off use script
+"""
 from HTMLParser import HTMLParser
 import urllib
 import psycopg2
